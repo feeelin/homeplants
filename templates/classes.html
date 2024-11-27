@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Классы
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="/static/classes.css">
+{% endblock %}
+
+{% block content %}
+    <h1 class="title">Классы</h1>
+    <div class="cells-container">
+        {% for element in classes %}
+            <div class="cell">
+                <p class="cell-title">{{ element.class_name }}</p>
+                <div>
+                    <div class="description-item">
+                        <p>Тип почвы: </p>
+                        <p>{{ element.soil_type }}</p>
+                    </div>
+                    <div class="description-item">
+                        <p>Время пересадки: </p>
+                        <p>{{ element.replanting_time }}</p>
+                    </div>
+                    <div class="description-item">
+                        <p>Тип подкормки: </p>
+                        <p>{{ element.feed_type }}</p>
+                    </div>
+                    <div class="description-item">
+                        <p>Время подкормки: </p>
+                        <p>{{ element.feed_time }}</p>
+                    </div>
+                    <div class="description-item">
+                        <p>Зимний водяной режим: </p>
+                        <p>{{ element.winter_water_regime }}</p>
+                    </div>
+                    <div class="description-item">
+                        <p>Летний водяной режим: </p>
+                        <p>{{ element.summer_water_regime }}</p>
+                    </div>
+                </div>
+                <a href="/classes/edit/{{ element.id }}" class="button-link">Редактировать</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

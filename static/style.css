@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat, serif;
+}
+
+main {
+    padding: 3vh 2vw;
+}
+
+.base-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 2vh 2vw;
+    background-color: green;
+}
+
+.base-header-navigation {
+    display: flex;
+    gap: 2vw;
+}
+
+.base-header-navigation > a {
+    text-decoration: none;
+    color: white;
+}
+
+.base-logo{
+    font-size: 1vw;
+    font-weight: 600;
+    text-decoration: none;
+    color: white;
+}
+
+.title {
+    padding: 0 0 3vh 0;
+}
+
+.button-link {
+    text-decoration: none;
+    color: white;
+    background-color: green;
+    padding: 1vh 1vw;
+    text-align: center;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    width: 50%;
+}
+
+form > label {
+    display: flex;
+    justify-content: space-between;
+}
+
+input {
+    border: 1px solid green;
+    padding: 1vh 1vw;
+    width: 20vw;
+}

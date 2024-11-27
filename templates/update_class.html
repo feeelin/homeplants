@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Редактирование класса{% endblock %}
+
+{% block content %}
+    <h1 class="title">Редактирование класса</h1>
+    <form method="post">
+        <label>
+            Название
+            <input type="text" name="class_name" placeholder="Введите название" value="{{ updating.class_name }}">
+        </label>
+        <label>
+            Тип почвы
+            <input type="text" name="soil_type" placeholder="Введите тип почвы" value="{{ updating.soil_type }}">
+        </label>
+        <label>
+            Время пересадки
+            <input type="text" name="replanting_time" placeholder="Введите время пересадки" value="{{ updating.replanting_time }}">
+        </label>
+        <label>
+            Тип подкормки
+            <input type="text" name="feed_type" placeholder="Введите тип подкормки" value="{{ updating.feed_type }}">
+        </label>
+        <label>
+            Время подкормки
+            <input type="text" name="feed_time" placeholder="Введите время подкормки" value="{{ updating.feed_time }}">
+        </label>
+        <label>
+            Зимний водяной режим
+            <input type="text" name="winter_water_regime" placeholder="Введите зимний водяной режим" value="{{ updating.winter_water_regime }}">
+        </label>
+        <label>
+            Летний водяной режим
+            <input type="text" name="summer_water_regime" placeholder="Введите летний водяной режим" value="{{ updating.summer_water_regime }}">
+        </label>
+        <input type="submit" value="Обновить" class="button-link">
+    </form>
+{% endblock %}

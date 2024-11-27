@@ -1,12 +1,30 @@
-from flask import Flask
+from flask import Flask, render_template, request, redirect, url_for
+
+from services.plants_classes_services import PlantsClassesServices
 
 app = Flask(__name__)
 
 
 @app.route('/')
-def hello_world():
-    return 'Hello World!'
+def all_plants_page():
+    return render_template("index.html")
+
+
+@app.route('/classes')
+def all_classes_page():
+    classes = PlantsClassesServices().get_all()
+    return render_template("classes.html", classes=classes)
+
+
+@app.route('/classes/edit/<int:id>', methods=['GET', 'POST'])
+def edit_class_page(id: int):
+    manager = PlantsClassesServices()
+    if request.method == "POST":
+        manager.update_by_id(id, request.form)
+        return redirect(url_for("all_classes_page"))
+    updating = manager.get_by_id(id)
+    return render_template("update_class.html", updating=updating)
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
