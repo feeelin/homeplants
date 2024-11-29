@@ -1,13 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for
 
 from services.plants_classes_services import PlantsClassesServices
+from services.plants_services import PlantServices
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def all_plants_page():
-    return render_template("index.html")
+    plants = PlantServices().get_all()
+    return render_template("index.html", plants=plants)
 
 
 @app.route('/classes')

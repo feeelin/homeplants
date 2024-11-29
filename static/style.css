@@ -64,3 +64,7 @@ input {
     padding: 1vh 1vw;
     width: 20vw;
 }
+
+.delete-button {
+    background-color: red;
+}

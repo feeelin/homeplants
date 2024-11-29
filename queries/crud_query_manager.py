@@ -1,8 +1,10 @@
 from sqlalchemy import text
 from database import engine
 
+from queries.base_query_manager import BaseQueryManager
 
-class CrudQueryManager:
+
+class CrudQueryManager(BaseQueryManager):
     def __init__(self, data_class, table_name):
         self.data_class = data_class
         self.table_name = table_name

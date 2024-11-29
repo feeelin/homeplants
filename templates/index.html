@@ -2,6 +2,29 @@
 
 {% block title %}Главная{% endblock %}
 
+{% block style %}
+    <link rel="stylesheet" href="/static/plants.css">
+{% endblock %}
+
 {% block content %}
     <h1 class="title">Растения</h1>
+
+    <div>
+        <div class="table-heading table-item">
+            <p>Название</p>
+            <p>Возраст</p>
+            <p>Класс</p>
+        </div>
+        {% for plant in plants %}
+            <div class="table-item">
+                <p>{{ plant.name }}</p>
+                <p>{{ plant.age }} лет</p>
+                <p>{{ plant.class_name }}</p>
+                <div class="table-item-buttons">
+                    <a href="#" class="button-link">Редактировать</a>
+                    <a href="#" class="delete-button button-link">Удалить</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
