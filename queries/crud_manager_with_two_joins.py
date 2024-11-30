@@ -39,3 +39,19 @@ class CrudManagerWithTwoJoins(BaseQueryManager):
             for row in result:
                 result_translated.append(self.data_class(*row))
         return result_translated
+
+    def get_row_by_id(self, id) -> list:
+        query = f"""
+            SELECT * FROM {self.first_table_name} 
+                JOIN {self.second_table_name} 
+                ON {self.first_table_name}.{self.first_pk} = {self.second_table_name}.{self.second_pk}
+                JOIN {self.third_table_name} 
+                ON {self.third_table_name}.{self.third_pk} = {self.second_table_name}.{self.second_and_third_unit}
+                WHERE {self.first_table_name}.{self.first_pk} = :id;
+            """
+
+        with engine.connect() as connection:
+            result = connection.execute(text(query), {"id": id})
+            for r in result:
+                result_translated = self.data_class(*r)
+        return result_translated

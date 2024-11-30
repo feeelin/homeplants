@@ -33,7 +33,7 @@ class CrudQueryManager(BaseQueryManager):
             connection.commit()
 
     def get_row_by_id(self, id: int) -> list:
-        query = f"SELECT * FROM {self.table_name} WHERE id = (id);"
+        query = f"SELECT * FROM {self.table_name} WHERE id = :id;"
 
         with engine.connect() as connection:
             result = connection.execute(text(query), {"id": id})

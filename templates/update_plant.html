@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Редактирование растения
+{% endblock %}
+
+{% block content %}
+<h1 class="title">Редактирование растения</h1>
+<form method="post">
+    <label>
+        Название
+        <p>{{ updating.name }}</p>
+    </label>
+    <div>
+        <a href="/plants_info/edit/{{ updating.info_id }}" class="button-link">Редактировать информацию о растении</a>
+    </div>
+    <label>
+        Класс
+        <p>{{ updating.class_name }}</p>
+    </label>
+    <div>
+        <a href="/classes/edit/{{ updating.class_id }}" class="button-link">Редактировать информацию о классе</a>
+    </div>
+    <label>
+        Возраст
+        <input type="text" name="age" placeholder="Введите возраст" value="{{ updating.age }}">
+    </label>
+    <input type="submit" class=button-link value="Обновить">
+</form>
+{% endblock %}
