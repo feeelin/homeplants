@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Редактирование помещения
+{% endblock %}
+
+{% block content %}
+    <h1 class="title">Редактирование помещения</h1>
+    <form method="post">
+        <label>
+            Количество мест:
+            <input  type="number" name="places_count" placeholder="{{ updating.places_count }}" disabled>
+        </label>
+        <label>
+            Тип помещения:
+            <input type="text" name="room_type" value="{{ updating.room_type }}">
+        </label>
+        <input type="submit" value="Обновить" class="button-link">
+    </form>
+{% endblock %}

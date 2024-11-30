@@ -27,8 +27,11 @@ class CrudQueryManagerWithJoin(BaseQueryManager):
 
         with engine.connect() as connection:
             result = connection.execute(text(query))
-            result_translated = []
-            for row in result:
-                result_translated.append(self.data_class(*row))
-        return result_translated
+        return self.transform_result_to_dataclass(result)
 
+    # TODO: Implement if need it
+    def get_row_by_id(self, id: int):
+        return None
+
+    def update_row(self, row):
+        print("Cannot update JOIN row. Use single managers instead.")

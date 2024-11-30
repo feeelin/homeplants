@@ -27,12 +27,19 @@
         </label>
         <label>
             Зимний водяной режим
-            <input type="text" name="winter_water_regime" placeholder="Введите зимний водяной режим" value="{{ updating.winter_water_regime }}">
+            <input type="text" name="winter_water_regime" placeholder="Введите зимний водяной режим"
+                   value="{{ updating.winter_water_regime }}">
         </label>
         <label>
             Летний водяной режим
-            <input type="text" name="summer_water_regime" placeholder="Введите летний водяной режим" value="{{ updating.summer_water_regime }}">
+            <input type="text" name="summer_water_regime" placeholder="Введите летний водяной режим"
+                   value="{{ updating.summer_water_regime }}">
         </label>
-        <input type="submit" value="Обновить" class="button-link">
+        <div>
+            <input type="submit" value="Обновить" class="button-link">
+            {% if is_deletable %}
+                <a class="delete-button button-link" href="#">Удалить</a>
+            {% endif %}
+        </div>
     </form>
 {% endblock %}

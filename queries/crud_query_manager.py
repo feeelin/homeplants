@@ -14,10 +14,7 @@ class CrudQueryManager(BaseQueryManager):
 
         with engine.connect() as connection:
             result = connection.execute(text(query))
-            result_translated = []
-            for row in result:
-                result_translated.append(self.data_class(*row))
-        return result_translated
+        return self.transform_result_to_dataclass(result)
 
     def update_row(self, row: dict):
         to_build = []
@@ -37,6 +34,4 @@ class CrudQueryManager(BaseQueryManager):
 
         with engine.connect() as connection:
             result = connection.execute(text(query), {"id": id})
-            for r in result:
-                result_translated = self.data_class(*r)
-        return result_translated
+        return self.transform_result_to_dataclass(result)

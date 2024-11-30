@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Список мест в помещении {{ room.room_type }}
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="/static/room_places.css">
+{% endblock %}
+
+{% block content %}
+    <h1 class="title">Список мест в помещении {{ room.room_type }}</h1>
+    <form method="post">
+        {% for place in places %}
+            <div class="place-container">
+                <p><b>№{{ places.index(place) + 1 }}</b></p>
+                <label class="selection">
+                    Растение
+                    <select name="plant_id">
+                        <option value=none>Пусто</option>
+                        {% for plant in plants %}
+                            <option value="{{ plant.id }}"
+                                    {% if plant.id == place.plant_id %}selected{% endif %}>{{ plant.name }}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+            </div>
+        {% endfor %}
+        <input type="submit" class="button-link" value="Обновить">
+    </form>
+{% endblock %}

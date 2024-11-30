@@ -1,0 +1,15 @@
+.place-container {
+    display: flex;
+    gap: 2vw;
+    align-items: center;
+}
+
+.place-container > * {
+    padding: 1vh 0;
+}
+
+.selection {
+    display: flex;
+    gap: 1vw;
+    align-items: center;
+}

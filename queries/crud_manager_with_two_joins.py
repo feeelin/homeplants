@@ -12,7 +12,7 @@ class CrudManagerWithTwoJoins(BaseQueryManager):
                  second_pk: str,
                  third_table: str,
                  third_pk: str,
-                 second_and_third_unit: str,
+                 second_and_third_union: str,
                  data_class
                  ):
         self.first_table_name = first_table
@@ -20,7 +20,7 @@ class CrudManagerWithTwoJoins(BaseQueryManager):
         self.third_table_name = third_table
         self.first_pk = first_pk
         self.second_pk = second_pk
-        self.second_and_third_unit = second_and_third_unit
+        self.second_and_third_unit = second_and_third_union
         self.third_pk = third_pk
         self.data_class = data_class
 
@@ -35,10 +35,7 @@ class CrudManagerWithTwoJoins(BaseQueryManager):
 
         with engine.connect() as connection:
             result = connection.execute(text(query))
-            result_translated = []
-            for row in result:
-                result_translated.append(self.data_class(*row))
-        return result_translated
+        return self.transform_result_to_dataclass(result)
 
     def get_row_by_id(self, id) -> list:
         query = f"""
@@ -52,6 +49,7 @@ class CrudManagerWithTwoJoins(BaseQueryManager):
 
         with engine.connect() as connection:
             result = connection.execute(text(query), {"id": id})
-            for r in result:
-                result_translated = self.data_class(*r)
-        return result_translated
+        return self.transform_result_to_dataclass(result)[0]
+
+    def update_row(self, row):
+        print("Cannot update JOIN row. Use single manager's instead.")

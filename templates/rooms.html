@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Помещения
+{% endblock %}
+
+{% block content %}
+    <h1 class="title">Помещения</h1>
+
+    {% for room in rooms %}
+        <div class="cells-container">
+            <div class="cell">
+                <p class="cell-title">{{ room.room_type }}</p>
+                <div class="description-item">
+                    <p>Мест: </p>
+                    <p>{{ room.places_count }}</p>
+                </div>
+                <a href="/rooms/places/{{ room.id }}" class="button-link">Список мест</a>
+                <a href="/rooms/edit/{{ room.id }}" class="button-link">Редактировать</a>
+                <a href="#" class="delete-button button-link">Удалить</a>
+            </div>
+
+        </div>
+    {% endfor %}
+{% endblock %}

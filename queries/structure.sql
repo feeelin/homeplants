@@ -62,6 +62,9 @@ CREATE TABLE places (
 INSERT INTO plants_classes (class_name, soil_type, replanting_time, feed_type, feed_time, winter_water_regime, summer_water_regime)
 VALUES ('Деревья', 'Питательная смесь', 'Весна', 'Минеральная', '1 раз в месяц', 'Умеренный', 'Легкий')
 
+INSERT INTO plants_classes (class_name, soil_type, replanting_time, feed_type, feed_time, winter_water_regime, summer_water_regime)
+VALUES ('Лианы', 'Легкая рыхлая почва', 'Лето', 'Органическая', '2 раза в месяц', 'Обильный', 'Умеренный')
+
 INSERT INTO plants_info (plant_name, class_id)
 VALUES ('Фикус Бенджамина', 1)
 
@@ -73,4 +76,7 @@ JOIN plants_info
 ON plants.id = plants_info.id
 JOIN plants_classes
 ON plants_classes.id = plants_info.class_id
-WHERE 'plants.id' = 2;
+WHERE plants.id = 2;
+
+INSERT INTO rooms (places_count, room_type)
+VALUES (2, 'Гостиная');

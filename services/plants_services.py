@@ -1,5 +1,3 @@
-from werkzeug.datastructures import ImmutableMultiDict
-
 from services.base_services import BaseServices
 from queries.crud_manager_with_two_joins import CrudManagerWithTwoJoins
 from queries.crud_query_manager import CrudQueryManager
@@ -23,7 +21,3 @@ class PlantServices(BaseServices):
 
     def get_by_id(self, id):
         return self.full_query_manager.get_row_by_id(id)
-
-    def update_by_id(self, id: int, payload: ImmutableMultiDict) -> None:
-        updated_payload = {"id": id, **payload}
-        self.query_manager.update_row(updated_payload)
