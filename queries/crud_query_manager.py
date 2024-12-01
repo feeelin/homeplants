@@ -1,4 +1,6 @@
 from sqlalchemy import text
+from werkzeug.datastructures import ImmutableDict
+
 from database import engine
 
 from queries.base_query_manager import BaseQueryManager
@@ -17,13 +19,7 @@ class CrudQueryManager(BaseQueryManager):
         return self.transform_result_to_dataclass(result)
 
     def update_row(self, row: dict):
-        to_build = []
-        for key, value in row.items():
-            if key != "id":
-                to_build.append(f"{key} = '{value}'")
-        values = ", ".join(to_build)
-
-        query = f"UPDATE {self.table_name} SET {values} WHERE id = (id);"
+        query = f"UPDATE {self.table_name} SET {self.build_values_string(row)} WHERE id = :id;"
 
         with engine.connect() as connection:
             connection.execute(text(query), {"id": row["id"]})
@@ -35,3 +31,16 @@ class CrudQueryManager(BaseQueryManager):
         with engine.connect() as connection:
             result = connection.execute(text(query), {"id": id})
         return self.transform_result_to_dataclass(result)
+
+    def insert_row(self, row: dict) -> None:
+        query = (f"INSERT INTO {self.table_name} ({self.get_values_names_string(row)}) "
+                 f"VALUES ({self.build_values_string_without_keys(row)});")
+        with engine.connect() as connection:
+            connection.execute(text(query), {"id": id})
+            connection.commit()
+
+    def delete_row(self, id: int) -> None:
+        query = f"DELETE FROM {self.table_name} WHERE id = :id"
+        with engine.connect() as connection:
+            connection.execute(text(query), {"id": id})
+            connection.commit()

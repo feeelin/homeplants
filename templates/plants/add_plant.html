@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Создание растения
+{% endblock %}
+
+{% block content %}
+<h1 class="title">Создание растения</h1>
+<form method="post">
+    <label>
+        Вид растения
+        <select name="info_id">
+            {% for info in plants_info %}
+                <option value="{{ info.id }}">{{ info.name }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <div>
+        <a href="/plants_info/add" class="button-link">Создать вид растений</a>
+    </div>
+    <label>
+        Возраст
+        <input type="text" name="age" placeholder="Введите возраст">
+    </label>
+    <input type="submit" class=button-link value="Добавить">
+</form>
+{% endblock %}
+

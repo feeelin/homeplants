@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Создание помещения
+{% endblock %}
+
+{% block content %}
+    <h1 class="title">Создание помещения</h1>
+    <form method="post">
+        <label>
+            Количество мест:
+            <input  type="number" name="places_count">
+        </label>
+        <label>
+            Тип помещения:
+            <input type="text" name="room_type">
+        </label>
+        <input type="submit" value="Добавить" class="button-link">
+    </form>
+{% endblock %}

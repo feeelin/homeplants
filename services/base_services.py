@@ -18,4 +18,8 @@ class BaseServices(ABC):
         updated_payload = {"id": id, **payload}
         self.query_manager.update_row(updated_payload)
 
+    def create(self, payload: ImmutableMultiDict):
+        self.query_manager.insert_row(dict(payload))
 
+    def delete(self, id: int) -> None:
+        self.query_manager.delete_row(id)

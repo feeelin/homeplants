@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block style %}
-    <link rel="stylesheet" href="/static/room_places.css">
+    <link rel="stylesheet" href="/room_places.css">
 {% endblock %}
 
 {% block content %}
@@ -16,11 +16,11 @@
                 <p><b>№{{ places.index(place) + 1 }}</b></p>
                 <label class="selection">
                     Растение
-                    <select name="plant_id">
-                        <option value=none>Пусто</option>
+                    <select name="{{ place.id }}">
+                        <option value="NULL">Пусто</option>
                         {% for plant in plants %}
-                            <option value="{{ plant.id }}"
-                                    {% if plant.id == place.plant_id %}selected{% endif %}>{{ plant.name }}</option>
+                            <option value="{{ plant.plant_id }}"
+                                    {% if plant.plant_id == place.plant_id %}selected{% endif %}>{{ plant.name }}</option>
                         {% endfor %}
                     </select>
                 </label>

@@ -35,3 +35,9 @@ class CrudQueryManagerWithJoin(BaseQueryManager):
 
     def update_row(self, row):
         print("Cannot update JOIN row. Use single managers instead.")
+
+    def insert_row(self, row):
+        print("Cannot create JOIN row. Use single manager's instead.")
+
+    def delete_row(self, row):
+        print("Cannot delete JOIN row. Use single manager's instead.")

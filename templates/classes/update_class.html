@@ -38,7 +38,7 @@
         <div>
             <input type="submit" value="Обновить" class="button-link">
             {% if is_deletable %}
-                <a class="delete-button button-link" href="#">Удалить</a>
+                <a class="delete-button button-link" href="/classes/delete/{{ updating.id }}">Удалить</a>
             {% endif %}
         </div>
     </form>

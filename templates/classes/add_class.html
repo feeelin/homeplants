@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Создание класса{% endblock %}
+
+{% block content %}
+    <h1 class="title">Создание класса</h1>
+    <form method="post">
+        <label>
+            Название
+            <input type="text" name="class_name" placeholder="Введите название">
+        </label>
+        <label>
+            Тип почвы
+            <input type="text" name="soil_type" placeholder="Введите тип почвы">
+        </label>
+        <label>
+            Время пересадки
+            <input type="text" name="replanting_time" placeholder="Введите время пересадки">
+        </label>
+        <label>
+            Тип подкормки
+            <input type="text" name="feed_type" placeholder="Введите тип подкормки">
+        </label>
+        <label>
+            Время подкормки
+            <input type="text" name="feed_time" placeholder="Введите время подкормки">
+        </label>
+        <label>
+            Зимний водяной режим
+            <input type="text" name="winter_water_regime" placeholder="Введите зимний водяной режим">
+        </label>
+        <label>
+            Летний водяной режим
+            <input type="text" name="summer_water_regime" placeholder="Введите летний водяной режим">
+        </label>
+        <div>
+            <input type="submit" value="Добавить" class="button-link">
+        </div>
+    </form>
+{% endblock %}

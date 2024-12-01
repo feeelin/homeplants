@@ -12,6 +12,7 @@ class CrudManagerWithTwoJoins(BaseQueryManager):
                  second_pk: str,
                  third_table: str,
                  third_pk: str,
+                 first_and_second_union: str,
                  second_and_third_union: str,
                  data_class
                  ):
@@ -20,6 +21,7 @@ class CrudManagerWithTwoJoins(BaseQueryManager):
         self.third_table_name = third_table
         self.first_pk = first_pk
         self.second_pk = second_pk
+        self.first_and_second_union = first_and_second_union
         self.second_and_third_unit = second_and_third_union
         self.third_pk = third_pk
         self.data_class = data_class
@@ -28,7 +30,7 @@ class CrudManagerWithTwoJoins(BaseQueryManager):
         query = f"""
         SELECT * FROM {self.first_table_name} 
             JOIN {self.second_table_name} 
-            ON {self.first_table_name}.{self.first_pk} = {self.second_table_name}.{self.second_pk}
+            ON {self.first_table_name}.{self.first_and_second_union} = {self.second_table_name}.{self.second_pk}
             JOIN {self.third_table_name} 
             ON {self.third_table_name}.{self.third_pk} = {self.second_table_name}.{self.second_and_third_unit}
         """
@@ -41,7 +43,7 @@ class CrudManagerWithTwoJoins(BaseQueryManager):
         query = f"""
             SELECT * FROM {self.first_table_name} 
                 JOIN {self.second_table_name} 
-                ON {self.first_table_name}.{self.first_pk} = {self.second_table_name}.{self.second_pk}
+                ON {self.first_table_name}.{self.first_and_second_union} = {self.second_table_name}.{self.second_pk}
                 JOIN {self.third_table_name} 
                 ON {self.third_table_name}.{self.third_pk} = {self.second_table_name}.{self.second_and_third_unit}
                 WHERE {self.first_table_name}.{self.first_pk} = :id;
@@ -53,3 +55,9 @@ class CrudManagerWithTwoJoins(BaseQueryManager):
 
     def update_row(self, row):
         print("Cannot update JOIN row. Use single manager's instead.")
+
+    def insert_row(self, row):
+        print("Cannot create JOIN row. Use single manager's instead.")
+
+    def delete_row(self, row):
+        print("Cannot delete JOIN row. Use single manager's instead.")

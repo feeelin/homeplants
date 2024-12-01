@@ -12,6 +12,7 @@ class PlantServices(BaseServices):
                                                  "id",
                                                  "plants_classes",
                                                  "id",
+                                                 "info_id",
                                                  "class_id",
                                                  PlantWithInfo)
     query_manager = CrudQueryManager(Plant, "plants")

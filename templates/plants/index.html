@@ -8,8 +8,8 @@
 
 {% block content %}
     <h1 class="title">Растения</h1>
-
-    <div>
+    <a href="/plants/add" class="button-link">Добавить растение</a>
+    <div class="table-container">
         <div class="table-heading table-item">
             <p>Название</p>
             <p>Возраст</p>
@@ -22,7 +22,7 @@
                 <p>{{ plant.class_name }}</p>
                 <div class="table-item-buttons">
                     <a href="/plants/edit/{{ plant.plant_id }}" class="button-link">Редактировать</a>
-                    <a href="#" class="delete-button button-link">Удалить</a>
+                    <a href="/plants/delete/{{ plant.plant_id }}" class="delete-button button-link">Удалить</a>
                 </div>
             </div>
         {% endfor %}

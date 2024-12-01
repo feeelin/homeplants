@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Создание вида растений
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <label>
+            Название
+            <input type="text" name="plant_name" placeholder="Введите название">
+        </label>
+        <label>
+            Класс
+            <select name="class_id">
+                {% for class in classes %}
+                        <option value="{{ class.id }}">
+                            {{ class.class_name }}
+                        </option>
+                {% endfor %}
+            </select>
+        </label>
+        <input type="submit" class=button-link value="Добавить">
+    </form>
+{% endblock %}

@@ -73,6 +73,8 @@ input, select {
 .cells-container {
     display: flex;
     flex-wrap: wrap;
+    gap: 2vw;
+    padding: 3vh 0;
 }
 
 .cell {

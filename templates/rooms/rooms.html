@@ -6,6 +6,7 @@
 
 {% block content %}
     <h1 class="title">Помещения</h1>
+    <a href="/rooms/add" class="button-link">Добавить помещение</a>
 
     {% for room in rooms %}
         <div class="cells-container">
@@ -17,9 +18,8 @@
                 </div>
                 <a href="/rooms/places/{{ room.id }}" class="button-link">Список мест</a>
                 <a href="/rooms/edit/{{ room.id }}" class="button-link">Редактировать</a>
-                <a href="#" class="delete-button button-link">Удалить</a>
+                <a href="/rooms/delete/{{ room.id }}" class="delete-button button-link">Удалить</a>
             </div>
-
         </div>
     {% endfor %}
 {% endblock %}
